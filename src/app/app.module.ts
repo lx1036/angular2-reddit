@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RoutingModule } from './routing/routing.module';
+import { InMemoryWebApiModule } from './in-memory-web-api/in-memory-web-api.module';
 
 import { AppComponent } from './app.component';
 // import { SignupFormComponent } from './signup-form/signup-form.component';
@@ -15,9 +16,11 @@ import { NgHeroDetailComponent } from './ng-hero-detail/ng-hero-detail.component
 // import { HighlightDirective } from './contact/highlight.directive';
 // import {ContactService} from "./contact/contact.service";
 // import {UserService} from "./user.service";
-import { NgHeroService } from './ng-hero/ng-hero.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppRoutingComponent } from './modules/app-routing/app-routing.component';
 
+import { NgHeroService } from './ng-hero/ng-hero.service';
+import { InMemoryDataService } from './in-memory-data.service';
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NgHeroComponent,
     NgHeroDetailComponent,
     DashboardComponent,
+    AppRoutingComponent,
     // ArticleComponent,
     // ContactComponent,
     // AwesomePipe,
@@ -37,6 +41,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    InMemoryWebApiModule,
     RoutingModule
   ],
   providers: [

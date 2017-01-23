@@ -2,13 +2,31 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './ng-hero.model';
 import { HEROES } from './mock-heroes';
+import { Headers, Http } from '@angular/http';
 // import resolve = Q.resolve;
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class NgHeroService {
+  private heroesUrl = 'app/heroes';
+  
+  constructor(private http: Http) {
+    
+  }
   
   getHeroes(): Promise<Hero[]> {
-    return Promise.resolve(HEROES);
+    return this.http.get(this.heroesUrl)
+      .toPromise()
+      .then(response => response.json().data as Hero[])
+      .catch(this.handleError);
+    // return Promise.resolve(HEROES);
+  }
+  
+  private handleError(error: any): Promise<any> {
+    console.error('An error occured', error);
+    
+    return Promise.reject(error.message || error);
   }
   
   getHeroesSlowly(): Promise<Hero[]> {
